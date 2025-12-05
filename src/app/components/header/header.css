@@ -1,0 +1,26 @@
+.header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    border-bottom: 1px solid #eee;
+    background: #ff00006e;
+}
+
+.logo img {
+    height: 45px;
+    /* adjust size as needed */
+}
+
+.header-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-icons img {
+    height: 28px;
+    /* same icon size */
+    cursor: pointer;
+}

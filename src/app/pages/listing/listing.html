@@ -1,0 +1,58 @@
+<app-header></app-header>
+<div class="listing-container">
+    <div class="search-section">
+        <h2 style="margin: 0;">Search</h2>
+        <input type="text" placeholder="Search items..." [(ngModel)]="searchText" (input)="onSearchChange()" />
+        <div class="applied-filters" *ngIf="appliedFilters.length">
+            <span *ngFor="let filter of appliedFilters" class="filter-chip">
+                {{ filter }}
+                <button (click)="removeFilter(filter)">x</button>
+            </span>
+            <button class="clear-filters" (click)="clearFilters()">Clear Filters</button>
+        </div>
+    </div>
+    <div class="content">
+        <div class="categories">
+            <h3>Categories</h3>
+            <ul>
+                <li *ngFor="let category of categories">
+                    <input type="checkbox" [checked]="appliedFilters.includes(category)"
+                        (change)="toggleCategory(category)" />
+                    {{ category }}
+                </li>
+            </ul>
+        </div>
+        <div class="items-list">
+            <div class="results-count">
+                {{ filteredRewards.length }} results found
+                <button class="sort-btn" (click)="toggleSortPanel()">Sort</button>
+            </div>
+            <div class="item-card" *ngFor="let item of filteredRewards">
+                <div class="item-img">
+                    <img *ngIf="item.display_img_url; else placeholder" [src]="item.display_img_url" />
+                    <ng-template #placeholder>
+                        <div class="placeholder-img">No Image</div>
+                    </ng-template>
+                    <span class="stock" *ngIf="item.quantity === 0">Out of stock</span>
+                </div>
+                <div class="item-details">
+                    <h5>{{ item.name }}</h5>
+                    <p>{{ item.points }} Points</p>
+                    <p *ngIf="item.valid_until">Valid Until: {{ item.valid_until | date }}</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div *ngIf="isSortPanelOpen1">
+        <div class="sort-panel" [class.open]="isSortPanelOpen">
+            <h3>Sort By Name</h3>
+            <button class="sort-option" (click)="sortByName('ASC')">A → Z</button>
+            <button class="sort-option" (click)="sortByName('DESC')">Z → A</button>
+            <button class="close-panel" (click)="toggleSortPanel()">Close</button>
+        </div>
+    </div>
+    <div class="overlay" *ngIf="isSortPanelOpen" (click)="toggleSortPanel()"></div>
+</div>
+
+<app-footer></app-footer>
