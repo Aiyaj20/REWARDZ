@@ -9,7 +9,7 @@ import { Reward } from '../../services/reward';
 
 @Component({
   selector: 'app-listing',
-  imports: [CommonModule, FormsModule, Header, Footer, FilterPipe],
+  imports: [CommonModule, FormsModule, Header, Footer],
   templateUrl: './listing.html',
   styleUrl: './listing.css',
 })
