@@ -10,7 +10,6 @@
 
 .logo img {
     height: 45px;
-    /* adjust size as needed */
 }
 
 .header-icons {
@@ -21,6 +20,5 @@
 
 .header-icons img {
     height: 28px;
-    /* same icon size */
     cursor: pointer;
 }
